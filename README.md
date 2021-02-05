@@ -58,6 +58,7 @@ TODO:
 * [Vert.x User Group](https://groups.google.com/forum/?fromgroups#!forum/vertx)
 * [Vert.x Gitter](https://gitter.im/eclipse-vertx/vertx-users)
 * [App ideas: Chat App](https://github.com/florinpop17/app-ideas/blob/master/Projects/3-Advanced/Chat-App.md)
+* [Web sockets with Vert.x and SockJS](https://itnext.io/web-sockets-with-vert-x-and-sockjs-1f0710264eea)
 
 ---
 
