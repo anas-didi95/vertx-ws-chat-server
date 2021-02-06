@@ -5,7 +5,7 @@ function init() {
 }
 
 function registerHandler() {
-  eventBus = new EventBus("http://localhost:8888/eventbus");
+  eventBus = new EventBus("http://localhost:5000/eventbus");
   eventBus.onopen = function () {
     eventBus.registerHandler('out', function (error, message) {
       const counter = message.body;

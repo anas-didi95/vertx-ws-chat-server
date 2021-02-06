@@ -23,20 +23,21 @@ public class MainVerticle extends AbstractVerticle {
         .addStore(new ConfigStoreOptions().setType("env")));
 
     retriever.rxGetConfig().subscribe(config -> {
-      AppConfig.create(config);
+      AppConfig appConfig = AppConfig.create(config);
       Router router = Router.router(vertx);
 
       router.mountSubRouter("/eventbus", eventBusHandler());
       router.route().handler(staticHandler());
 
-      vertx.createHttpServer().requestHandler(router).listen(8888, "0.0.0.0", server -> {
-        if (server.succeeded()) {
-          System.out.println("HTTP server started on port 8888");
-          startPromise.complete();
-        } else {
-          startPromise.fail(server.cause());
-        }
-      });
+      vertx.createHttpServer().requestHandler(router).listen(appConfig.getAppPort(),
+          appConfig.getAppHost(), server -> {
+            if (server.succeeded()) {
+              System.out.println("HTTP server started on port " + appConfig.getAppPort());
+              startPromise.complete();
+            } else {
+              startPromise.fail(server.cause());
+            }
+          });
     }, e -> startPromise.fail(e));
   }
 
