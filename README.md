@@ -9,6 +9,7 @@ This application was generated using http://start.vertx.io
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Environment Variables](#environment-variables)
 * [Setup](#setup)
 * [Features](#features)
 * [References](#references)
@@ -23,6 +24,16 @@ Real-time chat interface where multiple users can interact with each other by se
 
 ## Technologies
 * Vert.x - Version 3.9.5
+
+---
+
+## Environment Variables
+Following table is a **mandatory** environment variables used in this project.
+
+| Variable Name | Datatype | Description |
+| --- | --- | --- |
+| APP_HOST | String | Server host |
+| APP_PORT | Number | Server port |
 
 ---
 
