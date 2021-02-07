@@ -1,6 +1,10 @@
 let eventBus;
+let username;
 
 function init() {
+  username = prompt("Please enter your username");
+  document.getElementById("username").innerHTML = username;
+
   registerHandler();
 }
 
