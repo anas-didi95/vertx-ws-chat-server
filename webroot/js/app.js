@@ -1,4 +1,19 @@
+const App = {
+  data() {
+    return {
+      username: "test"
+    }
+  },
+  mounted() {
+    console.log("mounted")
+    this.username = prompt("Please enter your username")
+  }
+}
+
+Vue.createApp(App).mount("#app")
+
 let eventBus;
+let username;
 
 function init() {
   registerHandler();

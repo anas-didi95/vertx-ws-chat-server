@@ -3,17 +3,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vert.x with SockJS</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js" integrity="sha512-5yJ548VSnLflcRxWNqVWYeQZnby8D8fJTmYRLyvs445j1XmzR8cnWi85lcHx3CUEeAX+GrK3TqTfzOO6LKDpdw==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js" integrity="sha512-2UUnrjl1Bs/5i6nC+tSIW4afx14yUzsmr8vTb3UKCF+pMrHYEPllgCJNqETuZLuVdwvVaG5tLtDTH5Ihhhgv4Q==" crossorigin="anonymous"></script>
-  <script src="js/app.js"></script>
 </head>
 <body onload="init();">
-  <h3>Counter</h3>
-  <div>
-    Current counter: <span id="current_value"></span>
-  </div>
-  <div>
-    <button type="button" onclick="increment();">Increment</button>
-  </div>
+  <main id="app">
+    <h4>Hi, {{username}}</h4>
+    <h4>Counter</h4>
+    <div>
+      Current counter: <span id="current_value"></span>
+    </div>
+    <div>
+      <button type="button" onclick="increment();">Increment</button>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js" integrity="sha512-5yJ548VSnLflcRxWNqVWYeQZnby8D8fJTmYRLyvs445j1XmzR8cnWi85lcHx3CUEeAX+GrK3TqTfzOO6LKDpdw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js" integrity="sha512-2UUnrjl1Bs/5i6nC+tSIW4afx14yUzsmr8vTb3UKCF+pMrHYEPllgCJNqETuZLuVdwvVaG5tLtDTH5Ihhhgv4Q==" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.prod.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

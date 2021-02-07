@@ -24,6 +24,7 @@ Real-time chat interface where multiple users can interact with each other by se
 
 ## Technologies
 * Vert.x - Version 3.9.5
+* Vue - Version 3.0.5
 
 ---
 
@@ -56,8 +57,9 @@ To run your application:
 ---
 
 ## Features
+- [x] User is prompted to enter a username when he visits the chat app. The username will be stored in the application
+
 TODO:
-- [ ] User is prompted to enter a username when he visits the chat app. The username will be stored in the application
 - [ ] User can see an `input field` where he can type a new message
 - [ ] By pressing the `enter` key or by clicking on the `send` button the text will be displayed in the `chat box` alongside his username (e.g. `John Doe: Hello World!`)
 
