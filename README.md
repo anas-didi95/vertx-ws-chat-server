@@ -24,6 +24,7 @@ Real-time chat interface where multiple users can interact with each other by se
 
 ## Technologies
 * Vert.x - Version 3.9.5
+* Vue - Version 3.0.5
 
 ---
 
