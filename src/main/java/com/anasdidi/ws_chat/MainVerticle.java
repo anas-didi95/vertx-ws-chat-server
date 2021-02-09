@@ -16,8 +16,6 @@ import io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler;
 
 public class MainVerticle extends AbstractVerticle {
 
-  // private static int counter = 0;
-
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     ConfigRetriever retriever = ConfigRetriever.create(vertx, new ConfigRetrieverOptions()//
@@ -44,17 +42,10 @@ public class MainVerticle extends AbstractVerticle {
 
   private Router eventBusHandler() {
     SockJSBridgeOptions options = new SockJSBridgeOptions()
-        .addOutboundPermitted(new PermittedOptions().setAddressRegex("out"))
         .addOutboundPermitted(new PermittedOptions().setAddress("ws-refresh-chat"))
-        .addInboundPermitted(new PermittedOptions().setAddressRegex("in"))
         .addInboundPermitted(new PermittedOptions().setAddress("ws-send-message"));
 
     return SockJSHandler.create(vertx).bridge(options, event -> {
-      System.out.println("event.type=" + event.type());
-      if (event.getRawMessage() != null) {
-        System.out.println(event.getRawMessage().encodePrettily());
-      }
-
       if (event.type() == BridgeEventType.SOCKET_CREATED) {
       }
 

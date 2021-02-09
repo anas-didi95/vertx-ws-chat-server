@@ -9,10 +9,6 @@ function registerHandler() {
   console.log("registerHandler");
   eventBus = new EventBus("http://localhost:5000/eventbus");
   eventBus.onopen = function () {
-    eventBus.registerHandler('out', function (error, message) {
-      const counter = message.body;
-      document.getElementById('current_value').innerHTML = counter;
-    });
     eventBus.registerHandler("ws-refresh-chat", function (error, response) {
       console.log("[registerHandler][ws-refreh-chat] response", response);
       console.log("[registerHandler][ws-refreh-chat] error", error);
@@ -24,11 +20,6 @@ function registerHandler() {
   }
 }
 
-function increment() {
-  console.log("increament");
-  eventBus.send("in", { "body": "hello" }, "headers");
-}
-
 const App = {
   data() {
     return {
@@ -37,7 +28,7 @@ const App = {
     }
   },
   created() {
-    this.username = prompt("Please enter your jjusername")
+    this.username = prompt("Please enter your username")
   },
   methods: {
     sendMessage() {
@@ -50,4 +41,3 @@ const App = {
   }
 }
 Vue.createApp(App).mount("#app")
-
