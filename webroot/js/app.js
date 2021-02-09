@@ -1,12 +1,18 @@
 const App = {
   data() {
     return {
-      username: ""
+      username: "",
+      message: ""
     }
   },
   created() {
-    this.username = prompt("Please enter your username")
+    this.username = prompt("Please enter your jjusername")
   },
+  methods: {
+    sendMessage() {
+      console.log("message", this.message)
+    }
+  }
 }
 
 Vue.createApp(App).mount("#app")

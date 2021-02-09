@@ -6,7 +6,15 @@
 </head>
 <body onload="init();">
   <main id="app">
+    <h1>Websocker Chat Application</h1>
     <h4>Hi, {{username}}</h4>
+    <hr/>
+    <form>
+      <input type="text" placeholder="Your message here" v-model="message"/>
+      &nbsp;
+      <button type="submit" v-on:click.prevent="sendMessage">Send</button>
+    </form>
+    </div>
     <h4>Counter</h4>
     <div>
       Current counter: <span id="current_value"></span>
