@@ -13,9 +13,13 @@ function registerHandler() {
       const counter = message.body;
       document.getElementById('current_value').innerHTML = counter;
     });
-    eventBus.registerHandler("ws-refresh-chat", function (error, message) {
-      console.log("[registerHandler][ws-refreh-chat] message", message);
+    eventBus.registerHandler("ws-refresh-chat", function (error, response) {
+      console.log("[registerHandler][ws-refreh-chat] response", response);
       console.log("[registerHandler][ws-refreh-chat] error", error);
+
+      const elChat = document.getElementById("chat");
+      const txtMessage = document.createTextNode(`${response.body.username}: ${response.body.message}\n`);
+      elChat.appendChild(txtMessage);
     });
   }
 }
