@@ -4,6 +4,7 @@ import com.anasdidi.ws_chat.common.AppConfig;
 import io.vertx.config.ConfigRetrieverOptions;
 import io.vertx.config.ConfigStoreOptions;
 import io.vertx.core.Promise;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.bridge.BridgeEventType;
 import io.vertx.ext.bridge.PermittedOptions;
 import io.vertx.ext.web.handler.sockjs.SockJSBridgeOptions;
@@ -14,8 +15,6 @@ import io.vertx.reactivex.ext.web.handler.StaticHandler;
 import io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler;
 
 public class MainVerticle extends AbstractVerticle {
-
-  private static int counter = 0;
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
@@ -43,19 +42,25 @@ public class MainVerticle extends AbstractVerticle {
 
   private Router eventBusHandler() {
     SockJSBridgeOptions options = new SockJSBridgeOptions()
-        .addOutboundPermitted(new PermittedOptions().setAddressRegex("out"))
-        .addInboundPermitted(new PermittedOptions().setAddressRegex("in"));
+        .addOutboundPermitted(new PermittedOptions().setAddress("ws-refresh-chat"))
+        .addInboundPermitted(new PermittedOptions().setAddress("ws-send-message"));
 
     return SockJSHandler.create(vertx).bridge(options, event -> {
       if (event.type() == BridgeEventType.SOCKET_CREATED) {
-        vertx.eventBus().publish("out", counter++);
-        System.out.println("A socker was created");
       }
 
       if (event.type() == BridgeEventType.SEND) {
-        vertx.eventBus().publish("out", counter++);
-        System.out.println("Client to server");
-        System.out.println(event.getRawMessage().encodePrettily());
+        JsonObject rawMessage = event.getRawMessage();
+        String address = rawMessage.getString("address");
+
+        if (address.equals("ws-send-message")) {
+          JsonObject body = rawMessage.getJsonObject("body");
+          String username = body.getString("username");
+          String message = body.getString("message");
+
+          vertx.eventBus().publish("ws-refresh-chat",
+              new JsonObject().put("username", username).put("message", message));
+        }
       }
 
       event.complete(true);

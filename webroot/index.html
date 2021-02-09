@@ -6,14 +6,15 @@
 </head>
 <body onload="init();">
   <main id="app">
+    <h1>Websocket Chat Application</h1>
     <h4>Hi, {{username}}</h4>
-    <h4>Counter</h4>
-    <div>
-      Current counter: <span id="current_value"></span>
-    </div>
-    <div>
-      <button type="button" onclick="increment();">Increment</button>
-    </div>
+    <pre id="chat"></pre>
+    <hr/>
+    <form>
+      <input type="text" placeholder="Your message here" v-model="message"/>
+      &nbsp;
+      <button type="submit" v-on:click.prevent="sendMessage">Send</button>
+    </form>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js" integrity="sha512-5yJ548VSnLflcRxWNqVWYeQZnby8D8fJTmYRLyvs445j1XmzR8cnWi85lcHx3CUEeAX+GrK3TqTfzOO6LKDpdw==" crossorigin="anonymous"></script>
